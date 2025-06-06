@@ -16,7 +16,7 @@
   font-family: var(--font-geist-sans);
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
@@ -25,7 +25,18 @@
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
   }
+}*/
+@media (prefers-color-scheme: light) {
+  .page {
+    --gray-rgb: 0, 0, 0;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.15);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --button-primary-hover: #eaeaea;
+    --button-secondary-hover: #333;
+  }
 }
+
 
 .main {
   display: flex;
@@ -161,8 +172,14 @@ a.secondary {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
   }
+}*/
+@media (prefers-color-scheme: light) {
+  .logo {
+    filter: none;
+  }
 }
+
