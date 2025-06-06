@@ -1,11 +1,17 @@
-import { NextApiRequest,NextApiResponse } from "next";
 import { NextResponse, NextRequest } from "next/server";
 
 let tasks = [
-  { id: '1', title: 'Take Coco to a vet', column: 'Not Started', dueDate: '2025-04-11' },
-  { id: '2', title: 'Accountant contract', column: 'In Progress' },
-  { id: '3', title: 'Request moving estimate', column: 'Blocked' },
+  { 
+    id: '1', 
+    title: 'Take Coco to a vet', 
+    column: 'Not Started', 
+    dueDate: '2025-04-11' 
+  },
+  { id: '2', title: 'Accountant contract', column: 'In Progress',    subtasks: ['Accountant contract', 'Request work payslips', 'Cancel VAT ID'] },
+  { id: '3', title: 'Request moving estimate', column: 'Blocked',subtasks: ['Request moving estimate', 'Order moving boxes'], },
   { id: '4', title: 'Nothing to be done 🙂', column: 'Done' },
+  { id: '5', title: 'Form Filling contract', column: 'Not Started',    subtasks: ['form download contract', 'Form printing', 'Cancel VAT ID'] },
+
 ];
 
 

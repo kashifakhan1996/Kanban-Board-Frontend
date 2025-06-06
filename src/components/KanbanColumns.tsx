@@ -4,9 +4,9 @@ import { Box, Typography } from "@mui/material";
 import TaskCard from "./TaskCard";
 
 interface Props{
-    title: string,
-    tasks:Task[],
-    onDelete:(id:String)=>void
+    title: string;
+    tasks:Task[];
+    onDelete:(id:string)=>void
 }
 // Add this mapping at the top of the file
 const columnStyles: Record<string, { bg: string; color: string }> = {
@@ -20,7 +20,7 @@ const columnStyles: Record<string, { bg: string; color: string }> = {
 export default function KanbanColumns ({title,tasks,onDelete}:Props){
   const { setNodeRef } = useDroppable({ id: title });
   return(
-    <Box ref={setNodeRef} sx={{width:250,p:1,border:'1px solid #ccc', borderRadius: 2}}>
+    <Box ref={setNodeRef} sx={{width:250,p:1}}>
         <Box
             sx={{
             backgroundColor: columnStyles[title].bg,

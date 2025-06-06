@@ -34,10 +34,13 @@ export default function Home() {
   return (
     <Container sx={{mt:4}}>
       <Typography variant="h4" gutterBottom>
-        Kanban Board
+        Personal
       </Typography>
+      <span>
+        A board to keep track of personal tasks
+      </span>
       <DndContext onDragEnd={handleDragEnd}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{mt:4,backgroundColor:'#F0F0F0',p:2,borderRadius:1}} >
            {columns.map((col) => (
             <Grid item key={col} xs={12} sm={6} md={3}>
               <KanbanColumns
