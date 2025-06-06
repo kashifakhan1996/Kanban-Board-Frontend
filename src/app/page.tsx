@@ -4,12 +4,27 @@ import { useEffect, useState } from "react";
 import { deleteTask, fetchTasks, updateTask } from "@/utils/api";
 import { Task } from "@/types/types";
 import { Container, Grid, Typography } from "@mui/material";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import KanbanColumns from "@/components/KanbanColumns";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core';
+
 
 const columns = ['Not Started', 'In Progress', 'Blocked', 'Done'] as const;
 
 export default function Home() {
+  const sensors = useSensors(
+  useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 5,
+    },
+  })
+);
   const [tasks,setTasks] = useState<Task[]>([])
   useEffect(()=>{
     fetchTasks().then(setTasks)
@@ -39,19 +54,21 @@ export default function Home() {
       <span>
         A board to keep track of personal tasks
       </span>
-      <DndContext onDragEnd={handleDragEnd}>
+      
         <Grid container spacing={2} sx={{mt:4,backgroundColor:'#F0F0F0',p:2,borderRadius:1}} >
+           <DndContext  sensors={sensors}
+  collisionDetection={closestCenter}
+  onDragEnd={handleDragEnd}>
            {columns.map((col) => (
-            <Grid item key={col} xs={12} sm={6} md={3}>
               <KanbanColumns
                 title={col}
                 tasks={tasks.filter(t => t.column === col)}
                 onDelete={handleDelete}
               />
-            </Grid>
           ))}
+          </DndContext>
         </Grid>
-      </DndContext>
+      
     </Container>
   );
 }

@@ -36,7 +36,7 @@ export default function KanbanColumns ({title,tasks,onDelete}:Props){
             {title}
         </Box>
         {tasks && tasks.map((task:Task)=>(
-            <TaskCard task={task} onDelete={onDelete}/>
+            <TaskCard task={task} onDelete={onDelete} key={task.id}/>
         ))}       
     </Box>
   )
